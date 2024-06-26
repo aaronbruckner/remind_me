@@ -66,4 +66,4 @@ def parse_command_line_arguments(args) -> ConsoleInput:
     
     parsed_args = parser.parse_args(args)
 
-    return ConsoleInput(action=parsed_args.action, password="")
+    return ConsoleInput(action=parsed_args.action, password=parsed_args.pw)

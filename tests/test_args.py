@@ -9,6 +9,7 @@ class TestParseCommandLineArguments:
         console_args = args.parse_command_line_arguments([expected_action, "-pw", "myPassword"])
 
         assert console_args.action == expected_action
+        assert console_args.password == "myPassword"
 
     @pytest.mark.parametrize(
         "input_args", 
