@@ -1,5 +1,7 @@
 import argparse
+from dataclasses import dataclass
 import sys
+from enum import StrEnum
 from rich.rule import Rule
 from remindme import display
 from remindme.console import console
@@ -19,8 +21,18 @@ class LoveParser(argparse.ArgumentParser):
         # Hijack print method to reroute to rich console for better formatting.
         console.print(message)
 
+class Action(StrEnum):
+    STATS = 'stats'
+    LOVE = 'love'
+    STORY = 'story'
+    SEX = 'sex'
 
-def parse_command_line_arguments():
+@dataclass
+class ConsoleInput:
+    action: Action
+    password: str
+
+def parse_command_line_arguments(args) -> ConsoleInput:
     invoke = "./remindme.py"
     usage = f"""
     [usage_code]{invoke} stats -pw myPassword[/]
@@ -49,4 +61,8 @@ def parse_command_line_arguments():
     """
     parser.add_argument("action", help=action_description, choices=["stats", "love", "story", "sex"])
     parser.add_argument("-pw", required=True, help="Love cannot defeat symmetric encryption. Ask Aaron for the password ❤️")
-    parser.parse_args()
+    parser.parse_args(args)
+    
+    parsed_args = parser.parse_args(args)
+
+    return ConsoleInput(action=parsed_args.action, password="")
