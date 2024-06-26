@@ -33,7 +33,7 @@ class ConsoleInput:
     password: str
 
 def parse_command_line_arguments(args) -> ConsoleInput:
-    invoke = "./remindme.py"
+    invoke = "./remindme.pex"
     usage = f"""
     [usage_code]{invoke} love -pw myPassword[/]
     [usage_code]{invoke} memory -pw myPassword[/]
