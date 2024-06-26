@@ -5,6 +5,7 @@ from enum import StrEnum
 from rich.rule import Rule
 from remindme import display
 from remindme.console import console
+from remindme.state import STATE_FILE_NAME
 
 class LoveParser(argparse.ArgumentParser):
     def error(self, err_msg):
@@ -41,13 +42,13 @@ def parse_command_line_arguments(args) -> ConsoleInput:
     [usage_code]{invoke} sex -pw myPassword[/]
     """
     parser = LoveParser(
-        description="""\
+        description=f"""\
         [red]A utility written for Miranda to reminder her about all the ways I love her[/] ❤️
         Pulls encrypted data from online, decrypts it, displays one of the selected topics, and tracks progress.
 
         Log back in occasionally to see new submissions!
 
-        Progress is saved in current working directory under ./remindme_progress.json
+        Progress is saved in current working directory under ./{STATE_FILE_NAME}
         """,
         usage=usage,
         formatter_class=argparse.RawTextHelpFormatter
