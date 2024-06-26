@@ -4,7 +4,7 @@ from remindme.args import Action
 
 class TestParseCommandLineArguments:
 
-    @pytest.mark.parametrize("expected_action", [Action.STATS, Action.LOVE, Action.STORY, Action.SEX])
+    @pytest.mark.parametrize("expected_action", [Action.LOVE, Action.MEMORY, Action.SEX])
     def test_basic_action(self, expected_action: Action):
         console_args = args.parse_command_line_arguments([expected_action, "-pw", "myPassword"])
 
@@ -15,7 +15,7 @@ class TestParseCommandLineArguments:
         "input_args", 
         [
             ["-pw", "myPassword"],
-            ["stats"],
+            ["love"],
             []
         ]
     )

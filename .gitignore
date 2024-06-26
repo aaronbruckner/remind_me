@@ -1,6 +1,7 @@
 # Project Specific gitignore
 resources/raw_data.yaml
 resources/raw_data_decrypted.yaml
+remindme_progress.json
 
 # Everything below is just a default python gitignore
 
