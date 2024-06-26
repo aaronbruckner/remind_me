@@ -35,7 +35,7 @@ def parse_command_line_arguments():
 
         Log back in occasionally to see new submissions!
 
-        Progress is saved in current working directory under ./remindme_progress
+        Progress is saved in current working directory under ./remindme_progress.json
         """,
         usage=usage,
         formatter_class=argparse.RawTextHelpFormatter
