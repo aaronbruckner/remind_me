@@ -1,3 +1,4 @@
+import sys
 import time
 import requests
 from remindme import crypto
@@ -13,5 +14,8 @@ def pull_latest_data(password: str) -> dict:
     with console.status(spinner):
         time.sleep(1.5)
         encrypted_data = requests.get(ENCRYPTED_DATA_URL).content
-        decrypted_data = crypto.decrypt(encrypted_data, password)
+        try:
+            decrypted_data = crypto.decrypt(encrypted_data, password)
+        except:
+            sys.exit()
         return load(decrypted_data, Loader)
