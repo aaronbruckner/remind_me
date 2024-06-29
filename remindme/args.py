@@ -31,6 +31,7 @@ class Action(StrEnum):
 class ConsoleInput:
     action: Action
     password: str
+    random: bool
 
 def parse_command_line_arguments(args) -> ConsoleInput:
     invoke = "./remindme.pex"
@@ -57,8 +58,9 @@ def parse_command_line_arguments(args) -> ConsoleInput:
     """
     parser.add_argument("action", help=action_description, choices=["love", "memory", "sex"])
     parser.add_argument("-pw", required=True, help="Love cannot defeat symmetric encryption. Ask Aaron for the password ❤️")
+    parser.add_argument("-r", action="store_true")
     parser.parse_args(args)
     
     parsed_args = parser.parse_args(args)
 
-    return ConsoleInput(action=parsed_args.action, password=parsed_args.pw)
+    return ConsoleInput(action=parsed_args.action, password=parsed_args.pw, random=parsed_args.r)
